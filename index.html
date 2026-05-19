@@ -154,10 +154,34 @@
       min-height: 100vh;
       background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 50%, var(--dark-3) 100%);
       display: flex; align-items: center;
-      padding: var(--nav-h) clamp(20px, 6vw, 80px) 0;
+      padding: var(--nav-h) clamp(20px, 6vw, 80px) 60px;
       position: relative;
       overflow: hidden;
     }
+    .hero-inner {
+      display: flex; align-items: center;
+      gap: 60px; width: 100%;
+      position: relative; z-index: 1;
+    }
+    .hero-img-col {
+      flex: 0 0 340px;
+      height: 480px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
+    }
+    .hero-img-col img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+    }
+    .hero-img-col::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, transparent 60%, rgba(233,30,140,0.15) 100%);
+      pointer-events: none;
+    }
+    @media (max-width: 900px) { .hero-img-col { display: none; } }
     .hero-grain {
       position: absolute; inset: 0; z-index: 0;
       opacity: 0.035;
@@ -177,8 +201,8 @@
       pointer-events: none;
     }
     .hero-content {
-      position: relative; z-index: 1;
-      max-width: 720px;
+      flex: 1;
+      max-width: 640px;
     }
     .hero-label {
       display: inline-flex; align-items: center; gap: 8px;
@@ -402,7 +426,7 @@
     .prod-wa {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       width: 100%;
-      background: #25D366;
+      background: var(--pink);
       color: white;
       border: none;
       padding: 11px;
@@ -414,7 +438,7 @@
       text-decoration: none;
       transition: opacity 0.2s, transform 0.2s;
     }
-    .prod-wa:hover { opacity: 0.9; transform: scale(1.02); }
+    .prod-wa:hover { opacity: 0.88; transform: scale(1.02); box-shadow: 0 8px 24px rgba(233,30,140,0.35); }
     .prod-wa svg { width: 16px; height: 16px; fill: white; }
 
     /* ─── SUCURSALES ─── */
@@ -510,7 +534,7 @@
     }
     .contact-wa-btn {
       display: flex; align-items: center; justify-content: center; gap: 10px;
-      background: #25D366;
+      background: var(--pink);
       color: white;
       text-decoration: none;
       padding: 16px 20px;
@@ -519,7 +543,7 @@
       font-size: 0.95rem;
       transition: transform 0.25s, box-shadow 0.25s;
     }
-    .contact-wa-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(37,211,102,0.3); }
+    .contact-wa-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(233,30,140,0.4); }
     .contact-wa-btn svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
     .contact-wa-info { text-align: left; }
     .contact-wa-label { font-size: 0.75rem; opacity: 0.8; font-weight: 400; }
@@ -598,6 +622,44 @@
       transform: translateY(30px);
     }
 
+    /* ─── MARCAS ─── */
+    #marcas {
+      background: var(--dark);
+      padding: 60px clamp(20px, 6vw, 80px);
+      text-align: center;
+    }
+    .marcas-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .marcas-grid {
+      display: flex; flex-wrap: wrap;
+      gap: 12px; justify-content: center;
+      max-width: 800px; margin: 0 auto;
+    }
+    .marca-pill {
+      display: inline-flex; align-items: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(233,30,140,0.2);
+      color: rgba(255,255,255,0.8);
+      padding: 8px 20px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      cursor: default;
+    }
+    .marca-pill:hover {
+      background: var(--pink-dim);
+      border-color: var(--pink);
+      color: white;
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       .nav-links, .nav-wa { display: none; }
@@ -655,6 +717,7 @@
     <div class="hero-grain"></div>
     <div class="hero-orb-1"></div>
     <div class="hero-orb-2"></div>
+    <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-label fu">Distribuidora profesional · Los Mochis, Sinaloa</div>
       <h1 class="hero-title fu">
@@ -681,6 +744,10 @@
         <div class="badge">💅 Mayorista y menudeo</div>
         <div class="badge">🚚 Envíos a todo Sinaloa</div>
       </div>
+    </div>
+    <div class="hero-img-col">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=85&fit=crop" alt="Productos para uñas profesionales" loading="eager">
+    </div>
     </div>
   </section>
 
@@ -831,6 +898,62 @@
         </div>
       </div>
 
+      <div class="prod-card fu">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600&q=80&sat=20" alt="Esmalte semipermanente" loading="lazy">
+        <div class="prod-body">
+          <span class="prod-badge">GC Nails · Semipermanente</span>
+          <p class="prod-name">Esmalte Semipermanente GC</p>
+          <p class="prod-sub">Más de 200 colores disponibles · Alta cobertura en una capa · Sin grumos ni burbujas · Curado en 30 seg lámpara LED · Duración hasta 4 semanas</p>
+          <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20el%20Esmalte%20Semipermanente%20GC%20Nails%20%F0%9F%92%85" target="_blank" class="prod-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card fu">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80&hue=300" alt="Builder Gel" loading="lazy">
+        <div class="prod-body">
+          <span class="prod-badge">MC Nails · Builder Gel</span>
+          <p class="prod-name">Builder Gel MC Nails</p>
+          <p class="prod-sub">Gel constructor de alta viscosidad · Autonivelante · Colores: Clear, Pink, Natural · Para extensiones y refuerzos · Fácil de limar y dar forma</p>
+          <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20el%20Builder%20Gel%20MC%20Nails%20%F0%9F%92%85" target="_blank" class="prod-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card fu">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&sat=30" alt="Glitters y pigmentos" loading="lazy">
+        <div class="prod-body">
+          <span class="prod-badge">Nail Art · Decoración</span>
+          <p class="prod-name">Glitters y Pigmentos Chrome</p>
+          <p class="prod-sub">Efecto espejo y holográfico · Pigmentos en polvo ultra finos · Glitter chunky y fino · Amplia variedad de tonos · Para nail art profesional</p>
+          <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesan%20los%20Glitters%20y%20Pigmentos%20Chrome%20%F0%9F%92%85" target="_blank" class="prod-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── MARCAS ─── -->
+  <section id="marcas">
+    <p class="marcas-label fu">Marcas que distribuimos</p>
+    <div class="marcas-grid">
+      <span class="marca-pill fu">Fantasy Nails</span>
+      <span class="marca-pill fu">MC Nails</span>
+      <span class="marca-pill fu">LovelyNails</span>
+      <span class="marca-pill fu">GC Nails</span>
+      <span class="marca-pill fu">Conair</span>
+      <span class="marca-pill fu">Marca IB</span>
+      <span class="marca-pill fu">Wapizima</span>
+      <span class="marca-pill fu">Voglia</span>
+      <span class="marca-pill fu">Passini</span>
+      <span class="marca-pill fu">Sense</span>
     </div>
   </section>
 
