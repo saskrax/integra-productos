@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="INTEGRA productos para uñas — Distribuidora profesional de suministros para manicuristas. 4 sucursales en Sinaloa, envíos disponibles.">
+  <title>INTEGRA productos para uñas | Los Mochis, Sinaloa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --pink:       #E91E8C;
+      --pink-light: #FFB6C1;
+      --pink-dim:   rgba(233, 30, 140, 0.12);
+      --pink-glow:  rgba(233, 30, 140, 0.25);
+      --dark:       #1A1A2E;
+      --dark-2:     #2D1B3D;
+      --dark-3:     #16213E;
+      --white:      #FFFFFF;
+      --off-white:  #F8F4F6;
+      --muted:      #8A7A90;
+      --border:     rgba(233, 30, 140, 0.15);
+      --font-head:  'Playfair Display', Georgia, serif;
+      --font-body:  'Poppins', sans-serif;
+      --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --nav-h:      70px;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 99px; }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3 { font-family: var(--font-head); line-height: 1.2; }
+    p { line-height: 1.7; }
+
+    /* ─── NAVBAR ─── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-h);
+      background: rgba(26, 26, 46, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 clamp(20px, 5vw, 60px);
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    #nav.hidden { transform: translateY(-100%); }
+    #nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--pink); }
+    .nav-links {
+      display: flex; gap: 32px;
+      list-style: none;
+      margin-left: auto;
+      margin-right: 32px;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--pink-light); }
+    .nav-wa {
+      display: flex; align-items: center; gap: 8px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
+    .nav-wa:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,211,102,0.35); }
+    .nav-wa svg { width: 16px; height: 16px; fill: white; }
+    #burger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      background: none; border: none;
+      cursor: pointer; margin-left: auto; padding: 4px;
+    }
+    #burger span {
+      display: block; width: 24px; height: 2px;
+      background: white; border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    #burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    #burger.open span:nth-child(2) { opacity: 0; }
+    #burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    #mobile-nav {
+      display: none;
+      position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 999;
+      background: rgba(26,26,46,0.98);
+      backdrop-filter: blur(20px);
+      padding: 24px 32px 32px;
+      transform: translateY(-10px);
+      opacity: 0;
+      transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+      pointer-events: none;
+    }
+    #mobile-nav.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+    #mobile-nav a {
+      display: block;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    #mobile-nav a:hover { color: var(--pink-light); padding-left: 8px; }
+    #mobile-nav .mobile-wa {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #25D366; color: white;
+      padding: 14px; border-radius: 12px;
+      margin-top: 20px; font-weight: 600;
+      border: none; border-bottom: none;
+      transition: opacity 0.2s;
+    }
+    #mobile-nav .mobile-wa:hover { opacity: 0.9; padding-left: 8px; }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 50%, var(--dark-3) 100%);
+      display: flex; align-items: center;
+      padding: var(--nav-h) clamp(20px, 6vw, 80px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grain {
+      position: absolute; inset: 0; z-index: 0;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+    .hero-orb-1 {
+      position: absolute; top: -120px; right: -80px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(233,30,140,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-orb-2 {
+      position: absolute; bottom: -100px; left: -60px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(180,30,233,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 720px;
+    }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--pink-dim);
+      border: 1px solid var(--border);
+      color: var(--pink-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 28px;
+    }
+    .hero-label::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--pink); border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.05;
+    }
+    .hero-title .pink { color: var(--pink); }
+    .hero-title .italic { font-style: italic; font-weight: 400; }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      margin-bottom: 40px;
+      max-width: 560px;
+      line-height: 1.6;
+    }
+    .hero-btns {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--pink);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      font-family: var(--font-body);
+      border: none; cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px var(--pink-glow); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent;
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 99px;
+      font-weight: 500;
+      font-size: 0.92rem;
+      font-family: var(--font-body);
+      border: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    }
+    .btn-outline:hover {
+      border-color: var(--pink-light);
+      background: rgba(233,30,140,0.08);
+      transform: translateY(-3px);
+    }
+    .btn-outline svg, .btn-primary svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+    .hero-badges {
+      display: flex; gap: 14px; flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 99px;
+      backdrop-filter: blur(8px);
+    }
+    .badge-counter { color: var(--pink-light); font-weight: 700; }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section {
+      padding: clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px);
+    }
+    .section-dark {
+      background: var(--dark);
+      color: var(--white);
+    }
+    .section-off {
+      background: var(--off-white);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: clamp(36px, 5vw, 60px);
+    }
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .section-dark .section-title { color: var(--white); }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .section-dark .section-desc { color: rgba(255,255,255,0.5); }
+
+    /* ─── CATEGORÍAS ─── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .cat-card {
+      background: var(--white);
+      border: 1px solid rgba(233,30,140,0.1);
+      border-radius: 20px;
+      padding: 28px 24px;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s;
+      cursor: default;
+    }
+    .cat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px var(--pink-dim);
+      border-color: var(--pink);
+    }
+    .cat-icon {
+      width: 52px; height: 52px;
+      background: var(--pink-dim);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .cat-icon svg { width: 26px; height: 26px; }
+    .cat-name {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .cat-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── PRODUCTOS ─── */
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .prod-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .prod-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(233,30,140,0.15);
+    }
+    .prod-img {
+      width: 100%; height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .prod-body { padding: 20px; }
+    .prod-badge {
+      display: inline-block;
+      background: var(--pink-dim);
+      color: var(--pink);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+    }
+    .prod-name {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .prod-sub {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .prod-wa {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 11px;
+      border-radius: 10px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .prod-wa:hover { opacity: 0.9; transform: scale(1.02); }
+    .prod-wa svg { width: 16px; height: 16px; fill: white; }
+
+    /* ─── SUCURSALES ─── */
+    .suc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .suc-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 28px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .suc-card:hover {
+      border-color: var(--pink);
+      background: rgba(233,30,140,0.06);
+    }
+    .suc-card.closed {
+      border-color: rgba(255,255,255,0.06);
+      opacity: 0.7;
+    }
+    .suc-top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .suc-pin {
+      width: 40px; height: 40px;
+      background: var(--pink-dim);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .suc-pin svg { width: 20px; height: 20px; fill: var(--pink); }
+    .suc-status {
+      font-size: 0.72rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 99px;
+      letter-spacing: 0.06em;
+    }
+    .suc-status.open { background: rgba(37,211,102,0.15); color: #25D366; }
+    .suc-status.soon { background: rgba(255,165,0,0.15); color: #FFA500; }
+    .suc-name {
+      font-family: var(--font-head);
+      font-size: 1.2rem; font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .suc-addr {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .suc-hours { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 14px; }
+    .suc-hour-row {
+      display: flex; justify-content: space-between;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 4px;
+    }
+    .suc-hour-row span:last-child { color: var(--pink-light); font-weight: 500; }
+
+    /* ─── CONTACTO ─── */
+    #contacto {
+      background: linear-gradient(135deg, #2D0A22 0%, var(--dark-2) 50%, #1A0A2E 100%);
+      position: relative; overflow: hidden;
+    }
+    #contacto .hero-orb-1 { opacity: 0.5; }
+    .contact-inner {
+      position: relative; z-index: 1;
+      max-width: 680px; margin: 0 auto;
+      text-align: center;
+    }
+    .contact-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .contact-title .italic { font-style: italic; color: var(--pink-light); }
+    .contact-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .contact-wa-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-bottom: 32px;
+    }
+    .contact-wa-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 16px 20px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .contact-wa-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(37,211,102,0.3); }
+    .contact-wa-btn svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+    .contact-wa-info { text-align: left; }
+    .contact-wa-label { font-size: 0.75rem; opacity: 0.8; font-weight: 400; }
+    .contact-wa-num { font-size: 1rem; font-weight: 700; }
+    .contact-ig {
+      display: inline-flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      margin-bottom: 28px;
+    }
+    .contact-ig:hover { color: var(--pink-light); }
+    .contact-ig svg { width: 20px; height: 20px; fill: currentColor; }
+    .contact-note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.6;
+    }
+    .contact-note span { color: var(--pink-light); }
+
+    /* ─── FOOTER ─── */
+    #footer {
+      background: #0F0A18;
+      padding: 48px clamp(20px, 6vw, 80px) 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .footer-brand .logo-text {
+      font-family: var(--font-head);
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--white); margin-bottom: 8px;
+    }
+    .footer-brand .logo-text span { color: var(--pink); }
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      max-width: 260px;
+      line-height: 1.6;
+    }
+    .footer-links h4 {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 14px;
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--pink-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+    .footer-bottom a { color: var(--pink); text-decoration: none; }
+
+    /* ─── REVEAL ANIMATION ─── */
+    .fu {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links, .nav-wa { display: none; }
+      #burger { display: flex; }
+      #mobile-nav { display: block; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .prod-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-wa-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 580px) {
+      .cat-grid { grid-template-columns: 1fr; }
+      .prod-grid { grid-template-columns: 1fr; }
+      .suc-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn-primary, .hero-btns .btn-outline { justify-content: center; }
+      .footer-top { flex-direction: column; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─── -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">INTEGRA<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#categorias">Productos</a></li>
+      <li><a href="#destacados">Catálogo</a></li>
+      <li><a href="#sucursales">Sucursales</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20hacer%20un%20pedido%20%F0%9F%91%8B" target="_blank" class="nav-wa">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <button id="burger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ─── MOBILE NAV ─── -->
+  <div id="mobile-nav">
+    <a href="#categorias">Productos</a>
+    <a href="#destacados">Catálogo</a>
+    <a href="#sucursales">Sucursales</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20hacer%20un%20pedido%20%F0%9F%91%8B" target="_blank" class="mobile-wa">
+      <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Pedir por WhatsApp
+    </a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-grain"></div>
+    <div class="hero-orb-1"></div>
+    <div class="hero-orb-2"></div>
+    <div class="hero-content">
+      <div class="hero-label fu">Distribuidora profesional · Los Mochis, Sinaloa</div>
+      <h1 class="hero-title fu">
+        <span class="pink">INTEGRA</span><br>
+        <span class="italic">productos para</span><br>
+        uñas
+      </h1>
+      <p class="hero-subtitle fu">
+        Todo lo que necesita tu salón, en un solo lugar.<br>
+        Productos profesionales · 4 sucursales · Envíos disponibles.
+      </p>
+      <div class="hero-btns fu">
+        <a href="#categorias" class="btn-primary">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          Ver Productos
+        </a>
+        <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20hacer%20un%20pedido%20%F0%9F%91%8B" target="_blank" class="btn-outline">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir por WhatsApp
+        </a>
+      </div>
+      <div class="hero-badges fu">
+        <div class="badge">⭐ <span class="badge-counter" id="counter-seg">0</span> seguidores</div>
+        <div class="badge">💅 Mayorista y menudeo</div>
+        <div class="badge">🚚 Envíos a todo Sinaloa</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CATEGORÍAS ─── -->
+  <section id="categorias" class="section section-off">
+    <div class="section-header">
+      <span class="section-eyebrow fu">Lo que encontrarás</span>
+      <h2 class="section-title fu">Nuestras categorías</h2>
+      <p class="section-desc fu">Surtido completo para el salón de belleza profesional. Calidad garantizada en cada producto.</p>
+    </div>
+    <div class="cat-grid">
+
+      <div class="cat-card fu">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 1 5 5v3H7V7a5 5 0 0 1 5-5z"/><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M12 14v3"/></svg>
+        </div>
+        <p class="cat-name">Lámparas UV/LED</p>
+        <p class="cat-desc">Las más vendidas. Varios modelos y potencias para curado rápido y perfecto.</p>
+      </div>
+
+      <div class="cat-card fu">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+        </div>
+        <p class="cat-name">Geles y Acrílicos</p>
+        <p class="cat-desc">Colores, bases, topcoats, builders y DPC. Todo en un solo lugar.</p>
+      </div>
+
+      <div class="cat-card fu">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        </div>
+        <p class="cat-name">Nail Art</p>
+        <p class="cat-desc">Nailart impreso, decoraciones exclusivas, glitters y charms para diseños únicos.</p>
+      </div>
+
+      <div class="cat-card fu">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <p class="cat-name">Herramientas</p>
+        <p class="cat-desc">Fresas eléctricas, driles, limas y accesorios de manejo para trabajo profesional.</p>
+      </div>
+
+      <div class="cat-card fu">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <p class="cat-name">Kits Promoción</p>
+        <p class="cat-desc">Kits armados para manicuristas. Todo lo necesario desde el primer día.</p>
+      </div>
+
+      <div class="cat-card fu">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E91E8C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="cat-name">Decoración</p>
+        <p class="cat-desc">Piedras, foils, stickers, pigmentos y todo para dar el toque especial a cada diseño.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── PRODUCTOS DESTACADOS ─── -->
+  <section id="destacados" class="section">
+    <div class="section-header">
+      <span class="section-eyebrow fu">Catálogo selecto</span>
+      <h2 class="section-title fu">Productos destacados</h2>
+      <p class="section-desc fu">Los favoritos de nuestras manicuristas. Pide el tuyo directo por WhatsApp.</p>
+    </div>
+    <div class="prod-grid">
+
+      <div class="prod-card fu">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80" alt="Lámpara IA Soft Gel LovelyNails" loading="lazy">
+        <div class="prod-body">
+          <span class="prod-badge">⭐ Más vendida · LovelyNails</span>
+          <p class="prod-name">Lámpara IA para Soft Gel</p>
+          <p class="prod-sub">Sensor de movimiento inteligente · Luz enfocada solo en la uña · Curado rápido y uniforme · Protege la piel · Ideal para salón y uso personal</p>
+          <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20la%20L%C3%A1mpara%20IA%20para%20Soft%20Gel%20de%20LovelyNails%20%F0%9F%92%85" target="_blank" class="prod-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card fu">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600&q=80" alt="Cat Opal Eye Fantasy Nails" loading="lazy">
+        <div class="prod-body">
+          <span class="prod-badge">Fantasy Nails · $69</span>
+          <p class="prod-name">Cat Opal Eye Gel</p>
+          <p class="prod-sub">Efecto ojo de gato hipnótico · Varios colores disponibles · Alta pigmentación · Larga duración · Compatible con lámpara UV/LED</p>
+          <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20el%20Cat%20Opal%20Eye%20de%20Fantasy%20Nails%20%28%2469%29%20%F0%9F%92%85" target="_blank" class="prod-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card fu">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600&q=80" alt="Colección Gel" loading="lazy">
+        <div class="prod-body">
+          <span class="prod-badge">Fantasy Nails · $50</span>
+          <p class="prod-name">Gel Texturas Crystal & Black</p>
+          <p class="prod-sub">Nuevo lanzamiento · Acabado texturizado 3D · Dos versiones: Crystal y Black · Efecto único sobre nail art · Aplica con pincel o espátula</p>
+          <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20el%20Gel%20Texturas%20Crystal%20%26%20Black%20%28%2450%29%20%F0%9F%92%85" target="_blank" class="prod-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card fu">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80&fit=crop&h=400" alt="Fresa eléctrica" loading="lazy">
+        <div class="prod-body">
+          <span class="prod-badge">Fantasy Nails · Herramientas Pro</span>
+          <p class="prod-name">Kit Herramientas Fantasy Nails</p>
+          <p class="prod-sub">Incluye esterilizador profesional + set de pinceles liners + alicates de alta calidad · 100% originales Fantasy Nails · Eleva tu trabajo al siguiente nivel</p>
+          <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20el%20Kit%20Herramientas%20Fantasy%20Nails%20%F0%9F%92%85" target="_blank" class="prod-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card fu">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Kit DPC" loading="lazy">
+        <div class="prod-body">
+          <span class="prod-badge">Marca IB · Pestañas</span>
+          <p class="prod-name">Pegamentos IB para Pestañas</p>
+          <p class="prod-sub">Pegamento Rojo IB — $195 · Pegamento Verde IB — $195 · Primer IB — $179 · Fijación profesional de larga duración · Para extensión de pestañas</p>
+          <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesan%20los%20Pegamentos%20IB%20para%20pesta%C3%B1as%20%F0%9F%92%85" target="_blank" class="prod-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="prod-card fu">
+        <img class="prod-img" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80&sat=-20" alt="Nailart impreso" loading="lazy">
+        <div class="prod-body">
+          <span class="prod-badge">CONAIR · Pedicura Profesional</span>
+          <p class="prod-name">Tina Pedicura CONAIR</p>
+          <p class="prod-sub">Masaje de burbujas relajante · Tratamiento spa completo para pies · Línea profesional Conair · Perfecta para salones y uso en casa · Fácil de limpiar</p>
+          <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20la%20Tina%20Pedicura%20CONAIR%20%F0%9F%92%85" target="_blank" class="prod-wa">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── SUCURSALES ─── -->
+  <section id="sucursales" class="section section-dark">
+    <div class="section-header">
+      <span class="section-eyebrow fu">Encuéntranos</span>
+      <h2 class="section-title fu">Nuestras sucursales</h2>
+      <p class="section-desc fu">Visítanos en cualquiera de nuestras tiendas en Sinaloa. También hacemos envíos.</p>
+    </div>
+    <div class="suc-grid">
+
+      <div class="suc-card fu">
+        <div class="suc-top">
+          <div class="suc-pin">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <span class="suc-status open">● Abierta</span>
+        </div>
+        <p class="suc-name">Hidalgo Centro</p>
+        <p class="suc-addr">Hidalgo ÷ Zaragoza y Leyva<br>Los Mochis, Sinaloa</p>
+        <div class="suc-hours">
+          <div class="suc-hour-row"><span>Lunes – Sábado</span><span>9:00am – 7:30pm</span></div>
+          <div class="suc-hour-row"><span>Domingo</span><span>10:00am – 6:00pm</span></div>
+        </div>
+      </div>
+
+      <div class="suc-card fu">
+        <div class="suc-top">
+          <div class="suc-pin">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <span class="suc-status open">● Abierta</span>
+        </div>
+        <p class="suc-name">Tienda Juárez</p>
+        <p class="suc-addr">Juárez casi esq. Zaragoza<br>Los Mochis, Sinaloa</p>
+        <div class="suc-hours">
+          <div class="suc-hour-row"><span>Lunes – Viernes</span><span>9:00am – 7:00pm</span></div>
+          <div class="suc-hour-row"><span>Sábado</span><span>9:00am – 4:00pm</span></div>
+          <div class="suc-hour-row"><span>Domingo</span><span>10:00am – 2:00pm</span></div>
+        </div>
+      </div>
+
+      <div class="suc-card fu">
+        <div class="suc-top">
+          <div class="suc-pin">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <span class="suc-status open">● Abierta</span>
+        </div>
+        <p class="suc-name">Sucursal Guasave</p>
+        <p class="suc-addr">Guasave, Sinaloa</p>
+        <div class="suc-hours">
+          <div class="suc-hour-row"><span>Lunes – Viernes</span><span>9:00am – 7:00pm</span></div>
+          <div class="suc-hour-row"><span>Sábado</span><span>9:00am – 4:00pm</span></div>
+          <div class="suc-hour-row"><span>Domingo</span><span>9:00am – 3:00pm</span></div>
+        </div>
+      </div>
+
+      <div class="suc-card closed fu">
+        <div class="suc-top">
+          <div class="suc-pin">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <span class="suc-status soon">💪 Próximamente</span>
+        </div>
+        <p class="suc-name">Plaza Fiesta Las Palmas</p>
+        <p class="suc-addr">Blvd. Jiquilpan · Plaza Fiesta<br>Los Mochis, Sinaloa</p>
+        <div class="suc-hours">
+          <div class="suc-hour-row"><span>Reabrimos pronto</span><span>¡Gracias por su apoyo! 🙏</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CONTACTO ─── -->
+  <section id="contacto" class="section">
+    <div class="hero-orb-1" style="right:-120px;top:-100px;"></div>
+    <div class="contact-inner">
+      <span class="section-eyebrow fu">Haz tu pedido</span>
+      <h2 class="contact-title fu">¿Lista para <span class="italic">surtirte?</span></h2>
+      <p class="contact-sub fu">
+        Escríbenos directo por WhatsApp. Respondemos en menos de 2 horas en horario de tienda. Sin complicaciones.
+      </p>
+      <div class="contact-wa-grid fu">
+        <a href="https://wa.me/526682482248?text=Hola%2C%20me%20interesa%20hacer%20un%20pedido%20%F0%9F%91%8B" target="_blank" class="contact-wa-btn">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div class="contact-wa-info">
+            <div class="contact-wa-label">Línea principal</div>
+            <div class="contact-wa-num">668 248 2248</div>
+          </div>
+        </a>
+        <a href="https://wa.me/526681207352?text=Hola%2C%20me%20interesa%20hacer%20un%20pedido%20%F0%9F%91%8B" target="_blank" class="contact-wa-btn">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div class="contact-wa-info">
+            <div class="contact-wa-label">Línea secundaria</div>
+            <div class="contact-wa-num">668 120 7352</div>
+          </div>
+        </a>
+      </div>
+      <a href="https://www.instagram.com/integra.productos/" target="_blank" class="contact-ig fu">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @integra.productos
+      </a>
+      <p class="contact-note fu">
+        <span>Respondemos en menos de 2 horas</span> en horario de tienda.<br>
+        Pedidos al mayoreo y menudeo. Envíos a todo Sinaloa.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="logo-text">INTEGRA<span>.</span></p>
+        <p>Todo lo que necesita tu salón, en un solo lugar. Distribuidora profesional de productos para uñas en Sinaloa.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#categorias">Productos</a></li>
+          <li><a href="#destacados">Catálogo</a></li>
+          <li><a href="#sucursales">Sucursales</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/526682482248" target="_blank">668 248 2248</a></li>
+          <li><a href="https://wa.me/526681207352" target="_blank">668 120 7352</a></li>
+          <li><a href="https://www.instagram.com/integra.productos/" target="_blank">@integra.productos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 INTEGRA productos para uñas · Los Mochis, Sinaloa</p>
+      <p>Sitio web por <a href="https://wa.me/526688853458" target="_blank">Vivid Labs</a></p>
+    </div>
+  </footer>
+
+  <!-- ─── SCRIPTS ─── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      // FOUC prevention
+      gsap.set('.fu', { opacity: 0, y: 30 });
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      /* ─── HERO ENTRANCE ─── */
+      const heroItems = gsap.utils.toArray('#hero .fu');
+      gsap.to(heroItems, {
+        opacity: 1, y: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        stagger: 0.15,
+        delay: 0.2
+      });
+
+      /* ─── COUNTER ─── */
+      const counterEl = document.getElementById('counter-seg');
+      if (counterEl) {
+        gsap.to({ val: 0 }, {
+          val: 5215,
+          duration: 2,
+          delay: 0.8,
+          ease: 'power2.out',
+          onUpdate: function () {
+            counterEl.textContent = Math.round(this.targets()[0].val).toLocaleString('es-MX');
+          }
+        });
+      }
+
+      /* ─── SCROLL REVEAL ─── */
+      gsap.utils.toArray('.section .fu').forEach((el, i) => {
+        gsap.to(el, {
+          opacity: 1, y: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+          },
+          delay: (i % 6) * 0.08
+        });
+      });
+
+      /* ─── NAVBAR HIDE/SHOW ─── */
+      const nav = document.getElementById('nav');
+      let lastY = 0;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 80) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+        if (y > lastY && y > 250) nav.classList.add('hidden');
+        else nav.classList.remove('hidden');
+        lastY = y;
+      }, { passive: true });
+
+      /* ─── MOBILE MENU ─── */
+      const burger = document.getElementById('burger');
+      const mobileNav = document.getElementById('mobile-nav');
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        mobileNav.classList.toggle('open');
+      });
+      mobileNav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          burger.classList.remove('open');
+          mobileNav.classList.remove('open');
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
